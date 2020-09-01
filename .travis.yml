@@ -1,11 +1,8 @@
-dist: centraldashboard
+dist: jupyter-web-app
 
 env:
   global:
-    - REGISTRY_NAME=1049651653
-    - REGISTRY_PWD=lmg7831336
-    - REGISTRY=docker.io/1049651653
-    - IMAGE_NAME=jupyter-web-app-arm64:v1.0.0-g2bd63238
+    - IMAGE_NAME=pkskubeflow/jupyter-web-app-arm64:v1.0.0-g2bd63238
     - CODE_TAG=v1.0
     
 arch:
@@ -20,8 +17,6 @@ before_install:
 
 script:
   - cd kubeflow/components/jupyter-web-app
-  - docker build -t ${REGISTRY}/${IMAGE_NAME} -f Dockerfile .
-  
-after_success:
-- docker login -u ${REGISTRY_NAME} -p ${REGISTRY_PWD} ${REGISTRY}
-- docker push ${REGISTRY}/${IMAGE_NAME}
+  - docker build -t ${IMAGE_NAME} -f Dockerfile .
+  - docker login -u ${DOCKER_USER} -p ${DOCKER_PWD}
+  - docker push ${IMAGE_NAME}
