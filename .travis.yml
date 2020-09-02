@@ -2,7 +2,7 @@ dist: bionic
 
 env:
   global:
-    - IMAGE_NAME=pkskubeflow/jupyter-web-app-arm64:v1.0.0-g2bd63238
+    - IMAGE_NAME=pkskubeflow/jupyter-web-app:v1.0.0-g2bd63238
     - CODE_TAG=v1.0
 
 services:
