@@ -3,7 +3,7 @@ dist: bionic
 env:
   global:
     - IMAGE_NAME=pkskubeflow/jupyter-web-app:v1.0.0-g2bd63238
-    - CODE_TAG=v1.0
+    - CODE_TAG=pk-dev
 
 services:
   - docker
@@ -22,7 +22,7 @@ before_install:
   - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
   - docker buildx create --use
   - docker buildx inspect --bootstrap
-  - git clone -b ${CODE_TAG} --depth 1 https://github.com/kubeflow/kubeflow.git
+  - git clone -b ${CODE_TAG} --depth 1 https://github.com/minglex/kubeflow.git
 
 script:
   - cd kubeflow/components/jupyter-web-app
